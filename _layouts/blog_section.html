@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<!-- Post -->
+{% for post in site.posts limit:3 %}
+            <div class="post">
+                <!-- Heading -->
+                <a href="#"><h1>{{ post.title }}</h1></a>
+                <hr>
+                <div class="in-content">
+                    <img class="right" src=".{{{ post.image }}}" alt="">
+                    <p>
+                        {{{ post.description }}}
+                    </p>
+                    <a class="read-more" href="{{ post.url }}">Read more</a>
+                </div>
+                <div class="foot-post">
+                    <div class="units-row">
+                        <div class="unit-100">
+                            <strong>Tags:</strong>
+                            {% for tag in post.tags %}
+                            <a href="#">{{{ tag }}}</a>,
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /post -->
+{% endfor %}
