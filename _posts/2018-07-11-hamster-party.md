@@ -7,6 +7,7 @@ leftsidetitle: Left title
 leftside: Here's what will be displayed on the left side
 tags: Unity Hamsters
 postimage: hamster_post.jpg
+previewimage: hamster_post.jpg
 ---
 
 This is my first paragraph. See it. Smell it. Taste it
