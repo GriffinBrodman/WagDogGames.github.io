@@ -2,12 +2,13 @@
 title: Making a Portal Effect with the Shader Graph
 layout: blog_post
 description: I've been really excited about the launch of the ShaderGraph, and I wanted to share how I made a cute, simple shader for the Hamster Portal.
-shortdescription: Using the Shadergraph to make a portal effect
-leftsidetitle: Left title
+leftsidetitle: Using the Shadergraph to make a portal effect
 leftside: Here's what will be displayed on the left side
 tags: LWRP ShaderGraph Unity
 postimage: post-img.jpg
 previewimage: post-img.jpg
+authorlink: https://twitter.com/GriffinBrodman
+authorname: Griffin Brodman
 ---
 
 One thing I've been really excited about for a long time has been the release of the ShaderGraph in Unity! I've spent a lot of time in Blender, and having a Node Graph system for creating shaders just is a lot more intuitive to me. 

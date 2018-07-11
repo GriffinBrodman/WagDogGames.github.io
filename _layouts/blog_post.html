@@ -9,7 +9,7 @@ layout: blog_entry
                     <div class="col-md-8 col-md-offset-2">
                         <img class="post-photo" src="{{site.url}}/img/{{page.postimage}}">
                         <h1 class="intro-lead">{{ page.title }}</h1>
-                        <p class="">{{ page.shortdescription }}</p>
+                        <p class="">By <a href="page.authorlink">{{ page.authorname }}</a>, {{ page.date | date: '%B %d, %Y' }}</p>
                         <img src="{{site.url}}/blog/img/separator.png">
                     </div>
                 </div>
