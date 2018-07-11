@@ -1,6 +1,6 @@
 ---
 title: My First Post
-layout: default
+layout: blog_entry
 ---
 
 Some sample content...
