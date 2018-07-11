@@ -1,6 +1,6 @@
 ---
 title: My Second Post
-layout: default
+layout: blog_entry
 ---
 
 Some more sample content...
