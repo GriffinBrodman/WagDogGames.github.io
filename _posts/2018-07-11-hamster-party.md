@@ -6,6 +6,7 @@ shortdescription: Help the hamsters get to their party!
 tags: Unity Hamsters
 previewimage: {{site.url}}/img/post-img.jpg
 postimage: {{site.url}}/img/post-img.jpg
+url: banana.html
 ---
 
 This is my first paragraph. See it. Smell it. Taste it
