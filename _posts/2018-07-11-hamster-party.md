@@ -7,7 +7,6 @@ leftside: Here's what will be displayed on the left side
 tags: Unity Hamsters
 postimage: hamster_post.jpg
 previewimage: t_hamster_post.jpg
-expandedpreviewimage: hamster_post.jpg
 authorlink: https://twitter.com/GriffinBrodman
 authorname: Griffin Brodman
 ---
