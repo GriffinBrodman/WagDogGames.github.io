@@ -5,8 +5,9 @@ description: I've been really excited about the launch of the ShaderGraph, and I
 leftsidetitle: Using the Shadergraph to make a portal effect
 leftside: Here's what will be displayed on the left side
 tags: LWRP ShaderGraph Unity
-postimage: post-img.jpg
+postimage: t_post-img.jpg
 previewimage: post-img.jpg
+expandedpreviewimage: post-img.jpg
 authorlink: https://twitter.com/GriffinBrodman
 authorname: Griffin Brodman
 ---
