@@ -8350,6 +8350,14 @@ a > img.fh5co-align-center {
     letter-spacing:-2px;
     }
 
+  .navigation-toggle span {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    display: block;
+    padding: 10px 20px 10px 40px;
+  }
+
  .navigation-toggle .logo{
     font-size:20px;
     text-transform:capitalize;
