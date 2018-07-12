@@ -1,4 +1,4 @@
 ---
 title: Home
-layout: blog_section
+layout: home_page
 ---

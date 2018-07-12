@@ -3,34 +3,13 @@ layout: default
 ---
 
 
-    <!-- Introduction -->
-    <div class="intro">
-        <div class="container">
-            <div class="units-row">
-                <div class="unit-10">
-                    <img class="img-intro" src="{{site.url}}/img/avatar.png" alt="">
-                </div>
-                <div class="unit-90">
-                    <p class="p-intro">Hello, I’m Ellie. Bark Bark!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- About -->
-    <div class='about'>
-    WagDog Games is a a group of friends making the games we always wanted to play
-
-
-    </div>
-
     
     <!-- Content -->
     <div class="content">
         <div class="container">
 
     <!-- Post -->
-    {% for post in site.posts limit:3 %}
+    {% for post in site.posts %}
                 <div class="post">
                     <!-- Heading -->
                     <a href="#"><h1>{{ post.title }}</h1></a>
