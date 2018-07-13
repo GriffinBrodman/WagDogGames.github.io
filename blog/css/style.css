@@ -7779,4 +7779,45 @@ a > img.fh5co-align-center {
     padding-bottom:10px
     }
 
+@media only screen and (max-width:767px){
+    .intro{
+    padding-top:50px
+    }
+
+ img.img-intro{
+    display:block;
+    margin-left:auto;
+    margin-right:auto
+    }
+
+ .logo-w{
+    display:none
+    }
+
+ .main-nav{
+    padding-top:20px;
+    padding-bottom:20px
+    }
+
+ .top-nav .item-nav li{
+    padding-bottom:10px
+    }
+
+ footer .btn{
+    display:block;
+    margin-left:auto;
+    margin-right:auto
+    }
+
+ footer .social{
+    text-align:center
+    }
+
+ .foot-cp{
+    padding-top:10px
+       }
+
+
+    }
+
 /*# sourceMappingURL=style.css.map */
