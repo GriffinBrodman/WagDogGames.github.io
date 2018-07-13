@@ -2,7 +2,7 @@
 title: Making a Portal Effect with the Shader Graph
 layout: blog_post
 description: I've been really excited about the launch of the ShaderGraph, and I wanted to share how I made a cool, simple shader for the Hamster Portal.
-leftsidetitle: ShaderGraph Portal Tutorial
+leftsidetitle: ShaderGraph Portal Intro Level Tutorial
 leftside: I used the new Unity ShaderGraph to create a procedural portal texture, using screenspace coordinates and noise functions.
 tags: LWRP ShaderGraph Unity
 postimage: post-img.jpg
@@ -13,9 +13,36 @@ authorname: Griffin Brodman
 
 One thing I've been really excited about for a long time has been the release of the ShaderGraph in Unity! I've spent a lot of time in Blender, and having a Node Graph system for creating shaders just is a lot more intuitive to me.
 
-For Hamster Party, we're using the Lightweight Render Pipeline.
+For Hamster Party, we're using the Lightweight Render Pipeline. Our game is for mobile, and we don't plan on using any tricky lighting or shaders, so it seemed like a really great thing to try out. So far my experience with it has been really great, having all of my graphics settings preset for the type of project I'm making but also fully customizable has certainly saved a lot of time. The ShaderGraph is really powerful, and while I do plan to write my own shaders as well, it can just achieve really complex effects really quickly.
 
-American english coonhound australian terrier boerboel brussels griffon drentsche patrijshond harrier keeshond norwegian lundehund otterhound swedish vallhund welsh terrier. Appenzeller sennenhunde bedlington terrier bluetick coonhound braque du bourbonnais cardigan welsh corgi caucasian ovcharka coton de tulear estrela mountain dog giant schnauzer jindo karelian bear dog labrador retriever lakeland terrier lancashire heeler perro de presa canario pharaoh hound pointer russian toy st. bernard sussex spaniel treeing walker coonhound wirehaired vizsla. Belgian malinois border collie borzoi boston terrier briard chihuahua chow chow cocker spaniel dutch shepherd english foxhound harrier icelandic sheepdog karelian bear dog kuvasz portuguese podengo pequeno portuguese sheepdog puli rat terrier russian toy scottish deerhound scottish terrier shiba inu standard schnauzer.
+In Hamster Party, you find yourself having to go through Hamster Tubes, through a portal across space and time, and having to rescue hamsters by rotating their tubes so they can make their way back to the party.
 
-American foxhound catahoula leopard dog caucasian ovcharka cavalier king charles spaniel cesky terrier chihuahua chinese shar-pei chow chow curly-coated retriever danish-swedish farmdog english foxhound finnish spitz greater swiss mountain dog greyhound lagotto romagnolo miniature schnauzer norrbottenspets norwegian buhund polish lowland sheepdog russell terrier saluki shetland sheepdog small munsterlander pointer tibetan mastiff toy fox terrier welsh terrier. Anatolian shepherd dog australian terrier beagle border terrier bouvier des flandres chihuahua chinese shar-pei dalmatian dutch shepherd french spaniel german pinscher gordon setter mastiff miniature schnauzer neapolitan mastiff old english sheepdog pharaoh hound portuguese pointer pug schapendoes slovensky cuvac soft coated wheaten terrier tornjak toy fox terrier west highland white terrier.
+For this portal, I knew I wanted some cool swirling effect, and I also really wanted to make it look like a tear in space. Immediately I knew I probably wanted a shader in terms of screen space, where the color of a pixel is determined by its position on the screen, as compared to a shader terms of object space or the UVs, determined by the pixel's position on the object. This is a pretty simplified discussion but a good illustration is that if you had a sphere with some design, and you rotated the sphere, the image would rotate with the object if the shader in terms of the UVs of the object, or Object Space, but would not change at all if it was in terms of screen space. I like to think of it as if you had an image behind your screen, and the mesh that you put your shader on was like a hole in the screen, if that makes sense. For more about shaders, I highly recommend "Makin' Stuff Look Good" and [his series on Shaders](https://www.youtube.com/watch?v=T-HXmQAMhG0).
 
+I certainly don't think I've achieved anything too special with my effect, but I know the ShaderGraph is relatively knew and maybe this could give someone out there some tip or inspiration. To start off, I wanted my Shader to have some swirling effect, to look cool and ethereal and purple. I looked into the three types of noise that the ShaderGraph currently supports, Noise, Gradient Noise, and Voronoi. ADD BRIEF DESCRIPTION OF ALL THREE Gradient Noise definitely looked the most like what I was going for. 
+
+![image of all three colors](http://WagDogGames.com/img/2018posts/PortalShader/portal.jpg)
+
+I then used the Lerp Node (Linear Interpolation) to color it. If you're unfamiliar, Linear Interpolation is when you have two input values, and a factor to interpolate between them (T in the Lerp Node). If you had the numbers 3 and 6, and you wanted to interpolate to find the value 40% betweem them, you'd calculate (1-T) * A + T * B. Here that's 60% * 3 + 40% * 6, or 4.2. 
+
+In Unity, Lerp can be thought of as a "combine" node, where it takes some factor to combine them. This really gets interesting when you supply T as something more complex than a simple value. In this case, we're supplying T as the image produced by the Gradient Noise. The conversion between an image to a value can be thought of as "How white is this pixel?" A pure white pixel would be a 1, a pure black pixel would be a 0. Using this, every pixel is Lerped between the two colors I've selected, and we get this. (Note: For most shaders, I would use an input here so that these colors could be independently set per material, but I wanted to keep things simple for this tutorial. If you don't know what that means, a Unity Material is basically an instance of a shader, so if you have inputs to your shader, different materials could be providing different inputs to the same shader for a different effect.)
+
+![image of colored lerp](http://WagDogGames.com/img/2018posts/PortalShader/portal.jpg)
+
+Now that I had the color I wanted, I figured that all good portals are swirling and moving. Since I knew I wanted to move my texture, I hooked up the UV input from the Gradient Noise to the Tiling and Offset Node. If you've never heard of a UV, it's the mapping for a mesh to get from 2D inputs to 3D inputs. When people create textures, they're created in 2D, so graphics programs need a way to wrap that 2D image onto the 3D mesh. The name is really cute actually, if an object is made up of vertices with XYZ coordinates, it also has a 2D UV map made up of U and V. Like letters, get it? UVs are a big part of working with 3D models, and definitely worth learning about.
+
+By passing in a Tiling and Offset Node, we can tile our image, or we can shift (offset) our image. By moving the offset, I can make it look like the portal has some swirling magical energies of old. But I wanted it to continually swirl, so I needed to use time as my input. I split time into two multiply Nodes, and then combine them, so that I could control the speed at which the portal moves up/down and left/right independently, (along the U and V axes). Putting this all together, I get an effect that looks like this.
+
+![gif of portal](http://WagDogGames.com/img/2018posts/PortalShader/portal.jpg)
+
+At this point, I was almost done, but like I said before, I was interested in a more otherworldly look. I added a TODO Screenspace Node here, and used it for the Tiling and Offset Node. You can see the difference in effect below.
+
+![gif of screenspace portal](http://WagDogGames.com/img/2018posts/PortalShader/portal.jpg)
+
+This was pretty good, 
+
+At first, I was using the PBR Master Shader, PBR standing for Physically Based Rendering. This is a workflow for making physically accurate materials, being able to adjust things like smoothness, metalness, etc. It's a really great feature and it can make some amazingly realistic looking materials. That being said, I didn't love how my scene lighting was interacting with the portal, it made it hard to see the swirling. I decided to use the Unlit shader instead, meaning it would not interact with lighting in the scene. With some Emission on a seperate material on the rim of the portal, and enabling some post processing bloom I began to get really excited with how the portal was looking.
+
+![gif of finished portal](http://WagDogGames.com/img/2018posts/PortalShader/portal.jpg)
+
+That's about it! If you have any questions, or just want to show off your really cool portal shader, feel free to tweet us at [@WagDogGames](https://twitter.com/WagDogGames), or send an email. The ShaderGraph is a really powerful tool, and I hope you get inspired to make something cool!
