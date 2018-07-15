@@ -1,4 +1,4 @@
 ---
-title: Home
+title: index
 layout: home_page
 ---
