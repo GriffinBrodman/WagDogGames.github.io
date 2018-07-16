@@ -23,7 +23,7 @@ I certainly don't think I've achieved anything too special with my effect, but I
 
 ![noise image](http://WagDogGames.com/img/2018posts/PortalShader/noise.PNG)
 
-I then used the Lerp Node (Linear Interpolation) to color it. If you're unfamiliar, Linear Interpolation is when you have two input values, and a factor to interpolate between them (T in the Lerp Node).If you had the numbers 3 and 6, and you wanted to interpolate to find the value 40% betweem them, you'd calculate
+I then used the Lerp Node (Linear Interpolation) to color it. If you're unfamiliar, Linear Interpolation is when you have two input values, and a factor to interpolate between them (T in the Lerp Node).If you had the numbers 3 and 6, and you wanted to interpolate to find the value 40% between them, you'd calculate
 
 ```
 (1-T) * A + T * B 
