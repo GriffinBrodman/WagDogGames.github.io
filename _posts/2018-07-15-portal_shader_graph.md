@@ -25,9 +25,10 @@ I certainly don't think I've achieved anything too special with my effect, but I
 
 I then used the Lerp Node (Linear Interpolation) to color it. If you're unfamiliar, Linear Interpolation is when you have two input values, and a factor to interpolate between them (T in the Lerp Node).If you had the numbers 3 and 6, and you wanted to interpolate to find the value 40% betweem them, you'd calculate
 
+```
 (1-T) * A + T * B 
-
-Here that's 60% * 3 + 40% * 6, or 4.2. 
+60% * 3 + 40% * 6, or 4.2.
+```
 
 In Unity, Lerp can be thought of as a "combine" node, where it takes some factor to combine them. This gets interesting when you supply T as something more complex than a simple value. In this case, we're supplying T as the image produced by the Gradient Noise. The conversion between an image to a value can be thought of as "How white is this pixel?" A pure white pixel would be a 1, a pure black pixel would be a 0. Using the Simple Noise as an input, every pixel is Lerped between the two colors I've selected, and you can see the results in the image below. (Note: For most shaders, I would use an input here so that these colors could be independently set per material, but I wanted to keep things simple for this tutorial. A Unity Material is basically an instance of a shader, so if you have inputs to your shader, different materials could be providing different inputs to the same shader for a different effect.)
 
