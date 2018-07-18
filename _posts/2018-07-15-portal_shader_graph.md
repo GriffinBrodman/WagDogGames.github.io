@@ -3,7 +3,7 @@ title: Making a Portal Effect with the Shader Graph
 layout: blog_post
 description: I've been really excited about the launch of the ShaderGraph, and I wanted to share a small tutorial of how I made a cool, simple shader for the Hamster Portal.
 leftsidetitle: ShaderGraph Portal Intro Level Tutorial
-leftside: I used the new Unity ShaderGraph to create a procedural portal texture, using screenspace coordinates and noise functions.
+leftside: I used the new Unity ShaderGraph to create a procedural Portal texture, using screenspace coordinates and noise functions.
 tags: LWRP ShaderGraph Unity
 postimage: 2018posts/PortalShader/overview.PNG
 previewimage: 2018posts/PortalShader/overview.PNG
